@@ -74,11 +74,16 @@ public class navtab extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_search:
+                // search action
+                return true;
+            case R.id.action_settings:
+                //settings is in the overflow 3 dots
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**

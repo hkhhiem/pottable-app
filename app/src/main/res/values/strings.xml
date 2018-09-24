@@ -3,7 +3,7 @@
     <string name="title_activity_navtab" translatable="false">navtab</string>
     <string name="tab_text_1">Database</string>
     <string name="tab_text_2">My Pots</string>
-    <string name="tab_text_3">Settings</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="action_search">Search for plant names&#8230;</string>
 </resources>
