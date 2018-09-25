@@ -1,5 +1,6 @@
 package tpp.pottable;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -80,10 +81,13 @@ public class navtab extends AppCompatActivity {
                 return true;
             case R.id.action_settings:
                 //settings is in the overflow 3 dots
-                return true;
+                Intent intent = new Intent(this, settings.class);
+                this.startActivity(intent);
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return true;
     }
 
     /**

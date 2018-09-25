@@ -18,8 +18,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity
+            android:name=".settings"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".about"></activity>
     </application>
 
 </manifest>
