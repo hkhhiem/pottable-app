@@ -1,6 +1,7 @@
 package tpp.pottable;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -88,6 +89,9 @@ public class navtab extends AppCompatActivity {
         return true;
     }
 
+    /*DATABASE INIT*/
+    private DatabaseHelper mDBHelper;
+    private SQLiteDatabase mDb;
     /**
      * A placeholder fragment containing a simple view.
      */
