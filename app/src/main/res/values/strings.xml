@@ -80,6 +80,6 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="pref_header_about" translatable="false">About</string>
-    <string name="about_slogan">Planting made easier]</string>
+    <string name="about_slogan">Planting made easier</string>
     <string name="about_version" translatable="false">v0.0000001 lol</string>
 </resources>
