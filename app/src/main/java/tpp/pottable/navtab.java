@@ -1,5 +1,6 @@
 package tpp.pottable;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.TabLayout;
