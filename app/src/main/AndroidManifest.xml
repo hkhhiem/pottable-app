@@ -22,7 +22,14 @@
         <activity
             android:name=".settings"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".about"></activity>
+        <activity android:name=".about"
+            android:label="@string/pref_header_about"
+            android:theme="@style/Theme.AppCompat.Light">
+            <intent-filter>
+                <action android:name="tpp.pottable.about" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
