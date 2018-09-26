@@ -1,5 +1,5 @@
 //database helper v2 by Khiem and google search
-package tpp.pottable;
+package tpp.pottable.sqlite;
 
 import android.content.Context;
 import android.database.SQLException;
