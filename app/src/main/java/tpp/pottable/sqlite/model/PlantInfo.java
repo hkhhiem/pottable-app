@@ -2,7 +2,7 @@
 package tpp.pottable.sqlite.model;
 
 public class PlantInfo {
-    public static final String TABLE_NAME = "Finalised_List"; //in the sqlite pottable_def.db file
+    public static final String TABLE_NAME = "PottableDefault"; //in the sqlite pottable_def.db file
 
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_CATEGORY = "CATEGORY";
@@ -16,10 +16,10 @@ public class PlantInfo {
     public static final String COLUMN_SOIL = "SOIL";
     public static final String COLUMN_SPACE = "SPACE";
     public static final String COLUMN_PROBS = "PROBS";
-//fucking chep phat is real
-    private int id;
-    private String CATEGORY;
-    private String NAME;
+
+    public int id;
+    public String CATEGORY;
+    public String NAME;
     private String NAME_SCI;
     private String LIFESPAN;
     private int SUN;
@@ -29,6 +29,28 @@ public class PlantInfo {
     private int SOIL;
     private int SPACE;
     private String PROBS;
+
+    // Create SQL query, no longer used but kept here as backup
+    /*public static final String CREATE_TABLE = //creates a table named "Default" with the following columns in our data base file.
+            "CREATE TABLE " + TABLE_NAME + "("
+                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_CATEGORY + " TEXT,"
+                    + COLUMN_NAME + " TEXT,"
+                    + COLUMN_NAME_SCI + " TEXT,"
+                    + COLUMN_LIFESPAN + " TEXT,"
+                    + COLUMN_SUN + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_WATER + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_FERT_FREQ + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_FERT + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_SOIL + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_SPACE + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_PROBS + " TEXT,"
+                    + ")";*/
+
+    public PlantInfo() { //stupid blank constructor
+    }
+    //I really hate how Java defines a constructor, this makes it really similar to pre-declarations...
+    //fuck it guys my decision to learn C++ is right after all, also this is literally chep phat
 
     public PlantInfo(int id, String CATEGORY, String NAME, String NAME_SCI, String LIFESPAN, int SUN, int WATER, int FERT_FREQ, int FERT, int SOIL, int SPACE, String PROBS) {
         this.id=id;
