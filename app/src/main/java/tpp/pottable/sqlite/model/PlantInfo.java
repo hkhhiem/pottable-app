@@ -67,45 +67,45 @@ public class PlantInfo {
         this.PROBS=PROBS;
     }
     //getters:
-    public int getPlantID() {
+    public int getID() {
         return id;
     }
-    public String getPlantCategory() {
+    public String getCategory() {
         return CATEGORY;
     }
-    public String getPlantName() {
+    public String getName() {
         return NAME;
     }
-    public String getPlantNameSci() {
+    public String getNameSci() {
         return NAME_SCI;
     }
-    public String getPlantLifespan() {
+    public String getLifespan() {
         return LIFESPAN;
     }
-    public int getPlantSun() {
+    public int getSun() {
         return SUN;
     }
-    public int getPlantWater() {
+    public int getWater() {
         return WATER;
     }
-    public int getPlantFreq() {
+    public int getFreq() {
         return FERT_FREQ;
     }
-    public int getPlantFert() {
+    public int getFert() {
         return FERT;
     }
-    public int getPlantSoil() {
+    public int getSoil() {
         return SOIL;
     }
-    public int getPlantSpace() {
+    public int getSpace() {
         return SPACE;
     }
-    public String getPlantProbs() {
+    public String getProbs() {
         return PROBS;
     }
 
     //setters:
-    public void setId(int id) {
+    public void setID(int id) {
         this.id = id;
     }
 
