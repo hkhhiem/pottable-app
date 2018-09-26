@@ -2,7 +2,6 @@ package tpp.pottable;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.TextView;
+import tpp.pottable.sqlite.DatabaseHelper;
 
 public class navtab extends AppCompatActivity {
 
