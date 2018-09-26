@@ -2,7 +2,7 @@
 package tpp.pottable.sqlite.model;
 
 public class PlantInfo {
-    public static final String TABLE_NAME = "PottableDefault"; //in the sqlite pottable_def.db file
+    public static final String TABLE_NAME = "Finalised_List"; //in the sqlite pottable_def.db file
 
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_CATEGORY = "CATEGORY";
