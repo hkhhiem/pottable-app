@@ -2,6 +2,7 @@
 package tpp.pottable.sqlite;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -10,11 +11,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.io.InputStream;
 import java.io.OutputStream; //shit wont load with Alt-Enter, had to google but it's fine now
 import java.io.FileOutputStream; //and wtf is this?
+import java.util.ArrayList;
+import java.util.List;
+
+import tpp.pottable.sqlite.model.PlantInfo;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static String DB_PATH = "/data/data/tpp.pottable/databases/";
-
+    public static final int DB_VERSION = 1;
     //replace this with name of your db file which you copied into asset folder
     private static String DB_NAME = "pottable_def";
 
@@ -35,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Creates a empty database on the system and rewrites it with your own database.
+     * Creates a empty database on the system and rewrites it with our own default plant info database.
      * */
     public void createDatabase(){
         try {
@@ -45,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 //do nothing - database already exist
             }else{
                 //By calling this method an empty database will be created into the default system path
-                //of your application, which will get overwritten with ours.
+                //of our app, which will get overwritten with ours.
                 this.getReadableDatabase();
 
 
@@ -123,6 +128,83 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return myDatabase;
 
     }
+
+    //THIS ONE GETS THEM DATA
+    public PlantInfo getPlantInfo(long id) {
+        // get plant info from the info-database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(PlantInfo.TABLE_NAME, //absolute clusterfuck query
+                new String[]{PlantInfo.COLUMN_ID, PlantInfo.COLUMN_NAME, PlantInfo.COLUMN_NAME_SCI,
+                        PlantInfo.COLUMN_CATEGORY,PlantInfo.COLUMN_LIFESPAN,PlantInfo.COLUMN_SUN,
+                        PlantInfo.COLUMN_WATER,PlantInfo.COLUMN_SOIL,PlantInfo.COLUMN_FERT_FREQ,
+                        PlantInfo.COLUMN_FERT,PlantInfo.COLUMN_SPACE,PlantInfo.COLUMN_PROBS},
+                PlantInfo.COLUMN_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        // prepare note object
+        PlantInfo plantinfo = new PlantInfo(
+                cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_ID)),
+                cursor.getString(cursor.getColumnIndex(PlantInfo.COLUMN_CATEGORY)),
+                cursor.getString(cursor.getColumnIndex(PlantInfo.COLUMN_NAME)),
+                cursor.getString(cursor.getColumnIndex(PlantInfo.COLUMN_NAME_SCI)),
+                cursor.getString(cursor.getColumnIndex(PlantInfo.COLUMN_LIFESPAN)),
+                cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_SUN)),
+                cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_WATER)),
+                cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_FERT_FREQ)),
+                cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_FERT)),
+                cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_SOIL)),
+                cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_SPACE)),
+                cursor.getString(cursor.getColumnIndex(PlantInfo.COLUMN_PROBS))
+                );
+        // close the db connection
+        cursor.close();
+        return plantinfo;
+    }
+    
+    //THIS GETS ALL PLANTS IN A CATEGORY, but only the 4 basic info (4 round icons) + name and pic
+    /*public List<PlantInfo> getCatPlantInfo() {
+        List<PlantInfo> plantinfo_array = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + PlantInfo.TABLE_NAME + " ORDER BY " +
+                PlantInfo.COLUMN_NAME + " DESC"; //list out by names, descending
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        cursor.close();
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                PlantInfo plantinfo = new PlantInfo();
+                //plantinfo.setId             (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_ID)));
+                plantinfo.setCategory       (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_CATEGORY)));
+                plantinfo.setName           (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_NAME)));
+                //plantinfo.setNameSci        (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_NAME_SCI)));
+                //plantinfo.setLifespan       (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_LIFESPAN)));
+                plantinfo.setSun            (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_SUN)));
+                plantinfo.setWater          (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_WATER)));
+                //plantinfo.setFertFreq       (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_FERT_FREQ)));
+                //plantinfo.setFert           (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_FERT)));
+                plantinfo.setSoil           (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_SOIL)));
+                plantinfo.setSpace          (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_SPACE)));
+                //plantinfo.setProbs          (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_PROBS)));
+
+                plantinfo_array.add(plantinfo); //add it to the array
+            } while (cursor.moveToNext());
+        }
+
+        // close db connection
+        db.close();
+
+        // return da list
+        return plantinfo_array;
+    }
+    */
 
     @Override
     public synchronized void close() {

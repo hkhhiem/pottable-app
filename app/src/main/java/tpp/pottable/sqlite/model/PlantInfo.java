@@ -1,5 +1,5 @@
 //this class is for plant info (e.g. in the Database tab only). Monitored plants have another class since they contain different data slots.
-package tpp.pottable.sqlite;
+package tpp.pottable.sqlite.model;
 
 public class PlantInfo {
     public static final String TABLE_NAME = "Finalised_List"; //in the sqlite pottable_def.db file
@@ -82,4 +82,53 @@ public class PlantInfo {
         return PROBS;
     }
 
+    //setters:
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCategory(String category) {
+        this.CATEGORY = category;
+    }
+
+
+    public void setName(String name) {
+        this.NAME = name;
+    }
+
+    public void setNameSci(String nameSci) {
+        this.NAME_SCI = nameSci;
+    }
+
+    public void setLifespan(String lifespan) {
+        this.LIFESPAN = lifespan;
+    }
+
+    public void setSun(int sun) {
+        this.SUN = sun;
+    }
+
+    public void setWater(int water) {
+        this.WATER = water;
+    }
+
+    public void setFertFreq(int fertFreq) {
+        this.FERT_FREQ = fertFreq;
+    }
+
+    public void setFert(int fert) {
+        this.FERT = fert;
+    }
+
+    public void setSoil(int soil) {
+        this.SOIL = soil;
+    }
+
+    public void setSpace(int space) {
+        this.SPACE = space;
+    }
+
+    public void setProbs(String probs) {
+        this.PROBS = probs;
+    }
 }
