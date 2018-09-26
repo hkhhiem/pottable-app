@@ -1,4 +1,4 @@
-//database helper v2 by Khiem and google search
+//database helper v3 by Khiem and google search
 package tpp.pottable.sqlite;
 
 import android.content.Context;
@@ -42,21 +42,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * Creates a empty database on the system and rewrites it with our own default plant info database.
      * */
-    public void createDatabase(){
+    private void createDatabase(){
         try {
             boolean dbExist = checkDatabase();
 
-            if(dbExist){
-                //do nothing - database already exist
-            }else{
+            if(!dbExist)
                 //By calling this method an empty database will be created into the default system path
-                //of our app, which will get overwritten with ours.
+                //of our app...
                 this.getReadableDatabase();
-
-
+                //...which will get overwritten here:
                 copyDatabase();
-
-            }
         }
         catch (Exception e) {
             //fuck this
@@ -126,6 +121,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String myPath = DB_PATH + DB_NAME;
         myDatabase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
         return myDatabase;
+    }
+
+    @Override
+    public synchronized void close() {
+
+        if(myDatabase != null)
+        { myDatabase.close();}
+
+        super.close();
+
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        //Pottable comes with our team's prebuilt database as default, no need to create anything.
+    }
+
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 
@@ -166,11 +181,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     
     //THIS GETS ALL PLANTS IN A CATEGORY, but only the 4 basic info (4 round icons) + name and pic
-    /*public List<PlantInfo> getCatPlantInfo() {
+    public List<PlantInfo> getCatPlantInfo(String category) {
         List<PlantInfo> plantinfo_array = new ArrayList<>();
 
-        // Select All Query
-        String selectQuery = "SELECT  * FROM " + PlantInfo.TABLE_NAME + " ORDER BY " +
+        //query to get plants of a specific category
+        String selectQuery = "SELECT  * FROM " + PlantInfo.TABLE_NAME + " WHERE " + PlantInfo.COLUMN_CATEGORY +" LIKE "+ category + " ORDER BY " +
                 PlantInfo.COLUMN_NAME + " DESC"; //list out by names, descending
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -181,7 +196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 PlantInfo plantinfo = new PlantInfo();
-                //plantinfo.setId             (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_ID)));
+                plantinfo.setId             (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_ID)));
                 plantinfo.setCategory       (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_CATEGORY)));
                 plantinfo.setName           (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_NAME)));
                 //plantinfo.setNameSci        (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_NAME_SCI)));
@@ -203,27 +218,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // return da list
         return plantinfo_array;
-    }
-    */
-
-    @Override
-    public synchronized void close() {
-
-        if(myDatabase != null)
-        { myDatabase.close();}
-
-        super.close();
-
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
 
