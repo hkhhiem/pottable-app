@@ -196,7 +196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 PlantInfo plantinfo = new PlantInfo();
-                //plantinfo.setId             (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_ID)));
+                plantinfo.setId             (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_ID)));
                 plantinfo.setCategory       (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_CATEGORY)));
                 plantinfo.setName           (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_NAME)));
                 //plantinfo.setNameSci        (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_NAME_SCI)));
