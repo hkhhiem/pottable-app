@@ -82,4 +82,13 @@
     <string name="pref_header_about" translatable="false">About</string>
     <string name="about_slogan">Planting made easier</string>
     <string name="about_version" translatable="false">v0.0000001 lol</string>
+    <string name="database_category_separator">CATEGORIES</string>
+    <string name="database_wizard_prompt">Don\'t know which to plant?</string>
+    <string name="database_wizard_click">HELP ME CHOOSE</string>
+    <string name="cat_common">COMMON</string>
+    <string name="cat_common_desc">Ordinary plants, fit for any purpose.</string>
+    <string name="cat_foliage">FOLIAGE</string>
+    <string name="cat_foliage_desc">Big, beautiful leaves for decorative purposes.</string>
+    <string name="cat_succulent">SUCCULENT</string>
+    <string name="cat_succulent_desc">Description here.</string>
 </resources>
