@@ -91,4 +91,6 @@
     <string name="cat_foliage_desc">Big, beautiful leaves for decorative purposes.</string>
     <string name="cat_succulent">SUCCULENT</string>
     <string name="cat_succulent_desc">Description here.</string>
+    <string name="cat_unusual">UNUSUAL</string>
+    <string name="cat_unusual_desc">Description here.</string>
 </resources>

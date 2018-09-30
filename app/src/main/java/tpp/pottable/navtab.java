@@ -15,8 +15,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class navtab extends AppCompatActivity {
 
@@ -89,7 +94,7 @@ public class navtab extends AppCompatActivity {
     }
 
     /**
-     * A placeholder fragment containing a simple view.
+     * A placeholder fragment containing a simple cardview.
      */
     public static class PlaceholderFragment extends Fragment {
         /**
@@ -115,26 +120,6 @@ public class navtab extends AppCompatActivity {
 
     }
 
-    public static class database extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.database, container, false);
-            return rootView;
-        }
-    }
-
-    public static class mypots extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.mypots, container, false);
-            return rootView;
-        }
-    }
-
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -149,10 +134,10 @@ public class navtab extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch(position){
                 case 0:
-                    database tab1 = new database();
+                    DatabaseTab tab1 = new DatabaseTab();
                     return tab1;
                 case 1:
-                    mypots tab2 = new mypots();
+                    MyPotsTab tab2 = new MyPotsTab();
                     return tab2;
                 default:
                     return null;
