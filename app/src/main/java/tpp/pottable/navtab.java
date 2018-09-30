@@ -16,10 +16,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import tpp.pottable.sqlite.DatabaseHelper;
 
 import tpp.pottable.sqlite.DatabaseHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class navtab extends AppCompatActivity {
 
@@ -129,10 +134,10 @@ public class navtab extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch(position){
                 case 0:
-                    database tab1 = new database();
+                    DatabaseTab tab1 = new DatabaseTab();
                     return tab1;
                 case 1:
-                    mypots tab2 = new mypots();
+                    MyPotsTab tab2 = new MyPotsTab();
                     return tab2;
                 default:
                     return null;
