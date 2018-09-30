@@ -27,25 +27,6 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewIt
         // Inflate the RecyclerView item layout xml.
         View ItemView = layoutInflater.inflate(R.layout.cardview, parent, false);
 
-        // Get category title text view object.
-        final TextView TitleView = (TextView)ItemView.findViewById(R.id.card_view_image_title);
-        // Get category image view object.
-        final ImageView ImageView = (ImageView)ItemView.findViewById(R.id.card_view_image);
-        // Get category description view object
-        final TextView DescView = (TextView)ItemView.findViewById(R.id.card_view_image_desc);
-        // When click the image.
-        ImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get car title text.
-                String Title = TitleView.getText().toString();
-                String Desc = DescView.getText().toString();
-                // Create a snackbar and show it.
-                Snackbar snackbar = Snackbar.make(ImageView, "You click " + Title +" image: " + Desc, Snackbar.LENGTH_LONG);
-                snackbar.show();
-            }
-        });
-
         // Create and return our custom Category Recycler View Item Holder object.
         RecyclerViewItemHolder ret = new RecyclerViewItemHolder(ItemView);
         return ret;

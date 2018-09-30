@@ -39,7 +39,7 @@ public class DatabaseTab extends Fragment {
         return rootView;
     }
 
-    /* Initialise car items in list. */
+    /* Initialise items in list. */
     private void initializeItemList()
     {
         if(ItemList == null)

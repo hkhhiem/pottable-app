@@ -108,16 +108,7 @@ public class navtab extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.database, container, false);
             return rootView;
         }
-    }
 
-    public static class mypots extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.mypots, container, false);
-            return rootView;
-        }
     }
 
     /**
