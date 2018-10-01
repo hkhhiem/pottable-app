@@ -1,4 +1,4 @@
-package tpp.pottable.navtab.catView;
+package tpp.pottable.navtab.DatabaseTab;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package tpp.pottable.navtab.catView;
+package tpp.pottable.navtab.DatabaseTab;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tpp.pottable.R;
-import tpp.pottable.navtab.catView.CatRecyclerViewDataAdapter;
-import tpp.pottable.navtab.catView.CatRecyclerViewItem;
 import tpp.pottable.sqlite.DatabaseHelper;
 
 public class DatabaseTab extends Fragment {

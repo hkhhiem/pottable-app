@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import tpp.pottable.R;
-import tpp.pottable.navtab.catView.DatabaseTab;
+import tpp.pottable.navtab.DatabaseTab.DatabaseTab;
 import tpp.pottable.settings;
 
 public class navtab extends AppCompatActivity {
