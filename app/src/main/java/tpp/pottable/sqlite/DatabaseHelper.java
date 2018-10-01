@@ -7,6 +7,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -153,6 +155,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //THIS ONE CONVERTS BIT ARRAY TO IMAGE
+    public static Bitmap getBitmapFromByte(byte[] image) {
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
+
     //THIS ONE GETS THEM DATA
     public PlantInfo getPlantInfo(long id) {
         // get plant info from the info-database
@@ -182,8 +189,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_FERT)),
                 cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_SOIL)),
                 cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_SPACE)),
-                cursor.getString(cursor.getColumnIndex(PlantInfo.COLUMN_PROBS))
-                );
+                cursor.getString(cursor.getColumnIndex(PlantInfo.COLUMN_PROBS)),
+                getBitmapFromByte(cursor.getBlob(cursor.getColumnIndex(PlantInfo.COLUMN_IMAGE)))
+                ); //dirty af
         // close the db connection
         cursor.close();
         return plantinfo;
@@ -216,6 +224,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 plantinfo.setSoil           (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_SOIL)));
                 plantinfo.setSpace          (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_SPACE)));
                 //plantinfo.setProbs          (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_PROBS)));
+                plantinfo.setImage          (getBitmapFromByte(cursor.getBlob(cursor.getColumnIndex(PlantInfo.COLUMN_IMAGE)))); //fucking dirty
 
                 plantinfo_array.add(plantinfo); //add it to the array
             } while (cursor.moveToNext());

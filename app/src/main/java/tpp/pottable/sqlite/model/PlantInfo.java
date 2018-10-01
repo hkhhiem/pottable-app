@@ -1,6 +1,8 @@
 //this class is for plant info (e.g. in the Database tab only). Monitored plants have another class since they contain different data slots.
 package tpp.pottable.sqlite.model;
 
+import android.graphics.Bitmap;
+
 public class PlantInfo {
     public static final String TABLE_NAME = "PottableDefault"; //in the sqlite pottable_def.db file
 
@@ -16,6 +18,7 @@ public class PlantInfo {
     public static final String COLUMN_SOIL = "SOIL";
     public static final String COLUMN_SPACE = "SPACE";
     public static final String COLUMN_PROBS = "PROBS";
+    public static final String COLUMN_IMAGE = "IMAGE";
 
     public int id;
     public String CATEGORY;
@@ -29,6 +32,7 @@ public class PlantInfo {
     private int SOIL;
     private int SPACE;
     private String PROBS;
+    private Bitmap IMAGE;
 
     // Create SQL query, no longer used but kept here as backup
     /*public static final String CREATE_TABLE = //creates a table named "Default" with the following columns in our data base file.
@@ -52,7 +56,7 @@ public class PlantInfo {
     //I really hate how Java defines a constructor, this makes it really similar to pre-declarations...
     //fuck it guys my decision to learn C++ is right after all, also this is literally chep phat
 
-    public PlantInfo(int id, String CATEGORY, String NAME, String NAME_SCI, String LIFESPAN, int SUN, int WATER, int FERT_FREQ, int FERT, int SOIL, int SPACE, String PROBS) {
+    public PlantInfo(int id, String CATEGORY, String NAME, String NAME_SCI, String LIFESPAN, int SUN, int WATER, int FERT_FREQ, int FERT, int SOIL, int SPACE, String PROBS, Bitmap IMAGE) {
         this.id=id;
         this.CATEGORY=CATEGORY;
         this.NAME=NAME;
@@ -65,6 +69,7 @@ public class PlantInfo {
         this.SOIL=SOIL;
         this.SPACE=SPACE;
         this.PROBS=PROBS;
+        this.IMAGE=IMAGE;
     }
     //getters:
     public int getID() {
@@ -102,6 +107,9 @@ public class PlantInfo {
     }
     public String getProbs() {
         return PROBS;
+    }
+    public Bitmap getImage() {
+        return IMAGE;
     }
 
     //setters:
@@ -152,5 +160,8 @@ public class PlantInfo {
 
     public void setProbs(String probs) {
         this.PROBS = probs;
+    }
+    public void setImage(Bitmap IMAGE) {
+        this.IMAGE = IMAGE;
     }
 }
