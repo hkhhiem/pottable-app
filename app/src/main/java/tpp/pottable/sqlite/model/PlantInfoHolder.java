@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import tpp.pottable.R;
 
-public class PlantInfoHolderOverview extends RecyclerView.ViewHolder {
+public class PlantInfoHolder extends RecyclerView.ViewHolder {
 
     private TextView Name = null;
 
@@ -18,7 +18,7 @@ public class PlantInfoHolderOverview extends RecyclerView.ViewHolder {
     private ImageView data_soil = null;
     private ImageView data_size = null;
 
-    public PlantInfoHolderOverview(View itemView) {
+    public PlantInfoHolder(View itemView) {
         super(itemView);
         if (itemView != null){
             Name = (TextView) itemView.findViewById(R.id.card_view_image_tree);
