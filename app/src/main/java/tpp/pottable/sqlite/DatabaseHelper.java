@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream; //shit wont load with Alt-Enter, had to google but it's fine now
 import java.io.FileOutputStream; //and wtf is this?
@@ -30,39 +31,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * Constructor
      * Takes and keeps a reference of the passed context in order to access to the application assets and resources.
-     * @param //context
+     * //@param //context
      */
     public DatabaseHelper(Context context) {
 
         super(context, DB_NAME, null, 1);
         this.myContext = context;
-        this.createDatabase();
     }
 
     /**
      * Creates a empty database on the system and rewrites it with our own default plant info database.
      * */
-    private void createDatabase(){
-        try {
-            boolean dbExist = checkDatabase();
+    public void createDataBase() throws IOException{
 
-            if(!dbExist)
-                //By calling this method an empty database will be created into the default system path
-                //of our app...
-                this.getReadableDatabase();
-                //...which will get overwritten here:
+        boolean dbExist = checkDatabase();
+
+        if(dbExist){
+            //do nothing - database already exist
+        }else{
+
+            //By calling this method and empty database will be created into the default system path
+            //of your application so we are gonna be able to overwrite that database with our database.
+            this.getReadableDatabase();
+
+            try {
+
                 copyDatabase();
+
+            } catch (Exception e) {
+
+                throw new Error("Error copying database");
+
+            }
         }
-        catch (Exception e) {
-            //fuck this
-        }
+
     }
 
     /**
      * Check if the database already exist to avoid re-copying the file each time you open the application.
      * @return true if it exists, false if it doesn't
      */
-    private boolean checkDatabase(){
+    public boolean checkDatabase(){
 
         SQLiteDatabase checkDB = null;
 
@@ -78,7 +87,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             checkDB.close();
         }
 
-        return checkDB != null;
+        return checkDB != null ? true : false;
     }
 
     /**
@@ -86,7 +95,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * system folder, from where it can be accessed and handled.
      * This is done by transferring byte-stream which is retarded but hey we're just a small group of freshmen.
      * */
-    private void copyDatabase(){
+    public void copyDatabase(){
 
         try{
             //Open your local db as the input stream

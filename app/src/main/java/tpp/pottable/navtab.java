@@ -96,25 +96,17 @@ public class navtab extends AppCompatActivity {
         return true;
     }
 
-    /*DATABASE INIT*/
-    private DatabaseHelper mDBHelper;
-    private SQLiteDatabase mDb;
 
     public static class database extends Fragment {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.database, container, false);
-            return rootView;
+            return inflater.inflate(R.layout.database, container, false);
         }
 
     }
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -125,11 +117,9 @@ public class navtab extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch(position){
                 case 0:
-                    DatabaseTab tab1 = new DatabaseTab();
-                    return tab1;
+                    return new DatabaseTab();
                 case 1:
-                    MyPotsTab tab2 = new MyPotsTab();
-                    return tab2;
+                    return  new MyPotsTab();
                 default:
                     return null;
             }

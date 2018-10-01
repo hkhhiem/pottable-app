@@ -1,5 +1,6 @@
 package tpp.pottable;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import tpp.pottable.sqlite.DatabaseHelper;
 
 public class DatabaseTab extends Fragment {
 
@@ -38,6 +41,10 @@ public class DatabaseTab extends Fragment {
         catRecyclerView.setLayoutManager(gridLayoutManager);
         return rootView;
     }
+
+    /*DATABASE INIT*/
+    private DatabaseHelper mDBHelper;
+    private SQLiteDatabase mDb;
 
     /* Initialise items in list. */
     private void initializeItemList()
