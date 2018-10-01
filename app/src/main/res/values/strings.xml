@@ -93,4 +93,5 @@
     <string name="cat_succulent_desc">Description here.</string>
     <string name="cat_unusual">UNUSUAL</string>
     <string name="cat_unusual_desc">Description here.</string>
+    <string name="database_cat_separator">CATEGORIES</string>
 </resources>
