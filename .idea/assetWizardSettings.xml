@@ -78,8 +78,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_sync_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\hkhhi" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_soil5" />
+                            <entry key="sourceFile" value="D:\Documents\Soft Skills\symbols\soil5.svg" />
                           </map>
                         </option>
                       </PersistentState>
