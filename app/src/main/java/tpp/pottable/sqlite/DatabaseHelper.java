@@ -169,7 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        // prepare note object
+        // prepare a complete plantinfo object
         PlantInfo plantinfo = new PlantInfo(
                 cursor.getInt(cursor.getColumnIndex(PlantInfo.COLUMN_ID)),
                 cursor.getString(cursor.getColumnIndex(PlantInfo.COLUMN_CATEGORY)),
@@ -199,7 +199,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        cursor.close();
 
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
@@ -208,7 +207,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 plantinfo.setID             (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_ID)));
                 plantinfo.setCategory       (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_CATEGORY)));
                 plantinfo.setName           (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_NAME)));
-                //plantinfo.setNameSci        (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_NAME_SCI)));
+                //plantinfo.setNameSci        (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_NAME_SCI))); //these are unneeded but still there for backup
                 //plantinfo.setLifespan       (cursor.getString   (cursor.getColumnIndex(PlantInfo.COLUMN_LIFESPAN)));
                 plantinfo.setSun            (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_SUN)));
                 plantinfo.setWater          (cursor.getInt      (cursor.getColumnIndex(PlantInfo.COLUMN_WATER)));
@@ -223,11 +222,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         // close db connection
+        cursor.close();
         db.close();
 
         // return da list
         return plantinfo_array;
     }
+    public int getCatPlantCount() {
+        String countQuery = "SELECT  * FROM " + PlantInfo.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
 
-
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
+    }
 }
