@@ -1,6 +1,8 @@
 package tpp.pottable.navtab.DatabaseTab;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import tpp.pottable.R;
+import tpp.pottable.navtab.DatabaseTab.PlantInfoRecyclerView.PlantInfoRecyclerView;
 
 public class CatRecyclerViewDataAdapter extends RecyclerView.Adapter<CatRecyclerViewItemHolder> {
 
@@ -30,7 +33,7 @@ public class CatRecyclerViewDataAdapter extends RecyclerView.Adapter<CatRecycler
     }
 
     @Override
-    public void onBindViewHolder(CatRecyclerViewItemHolder holder, int position) {
+    public void onBindViewHolder(CatRecyclerViewItemHolder holder, final int position) {
         if(ItemList!=null) {
             // Get category item dto in list.
             CatRecyclerViewItem Item = ItemList.get(position);
@@ -44,7 +47,17 @@ public class CatRecyclerViewDataAdapter extends RecyclerView.Adapter<CatRecycler
                 holder.getDescText().setText(Item.getDesc());
             }
         }
+            holder.plantinfo_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), PlantInfoRecyclerView.class);
+                intent.putExtra("category", position);
+                view.getContext().startActivity(intent);
+            }
+        }
+        );
     }
+
 
     @Override
     public int getItemCount() {

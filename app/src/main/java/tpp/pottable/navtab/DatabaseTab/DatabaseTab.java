@@ -43,9 +43,7 @@ public class DatabaseTab extends Fragment {
         return rootView;
     }
 
-    /*DATABASE INIT*/
-    private DatabaseHelper mDBHelper;
-    private SQLiteDatabase mDb;
+
 
     /* Initialise items in list. */
     private void initializeItemList()
