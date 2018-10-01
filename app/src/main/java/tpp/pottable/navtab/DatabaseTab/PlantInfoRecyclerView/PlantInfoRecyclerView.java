@@ -1,10 +1,12 @@
-package tpp.pottable;
+package tpp.pottable.navtab.DatabaseTab.PlantInfoRecyclerView;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
-public class DatabaseCategoryInside extends AppCompatActivity {
+import tpp.pottable.R;
+
+public class PlantInfoRecyclerView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
