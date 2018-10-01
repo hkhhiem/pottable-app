@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        testkey {
+            keyAlias 'pottable14'
+            keyPassword 'pottable14'
+            storeFile file('D:/Documents/Soft Skills/keystore/tpp_key.jks')
+            storePassword 'pottable14'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "tpp.pottable"
@@ -17,6 +25,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.testkey
+        }
+        debug {
+            signingConfig signingConfigs.testkey
         }
     }
     sourceSets {
