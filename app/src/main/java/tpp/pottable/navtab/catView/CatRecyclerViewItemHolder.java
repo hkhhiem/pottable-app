@@ -1,4 +1,4 @@
-package tpp.pottable;
+package tpp.pottable.navtab.catView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

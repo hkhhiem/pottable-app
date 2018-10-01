@@ -1,4 +1,4 @@
-package tpp.pottable;
+package tpp.pottable.navtab.catView;
 
 public class CatRecyclerViewItem {
 

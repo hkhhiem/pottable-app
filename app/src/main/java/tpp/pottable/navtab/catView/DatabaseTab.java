@@ -1,4 +1,4 @@
-package tpp.pottable;
+package tpp.pottable.navtab.catView;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
@@ -12,6 +12,9 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import tpp.pottable.R;
+import tpp.pottable.navtab.catView.CatRecyclerViewDataAdapter;
+import tpp.pottable.navtab.catView.CatRecyclerViewItem;
 import tpp.pottable.sqlite.DatabaseHelper;
 
 public class DatabaseTab extends Fragment {
@@ -52,10 +55,10 @@ public class DatabaseTab extends Fragment {
         if(ItemList == null)
         {
             ItemList = new ArrayList<CatRecyclerViewItem>();
-            ItemList.add(new CatRecyclerViewItem("COMMON", R.drawable.common, "Description here."));
-            ItemList.add(new CatRecyclerViewItem("FOLIAGE", R.drawable.foliage, "Description here."));
-            ItemList.add(new CatRecyclerViewItem("SUCCULENT", R.drawable.succulent, "Description here."));
-            ItemList.add(new CatRecyclerViewItem("UNUSUAL", R.drawable.unusual, "Description here."));
+            ItemList.add(new CatRecyclerViewItem(getString(R.string.cat_common), R.drawable.common,getString(R.string.cat_common_desc)));
+            ItemList.add(new CatRecyclerViewItem(getString(R.string.cat_foliage), R.drawable.foliage, getString(R.string.cat_foliage_desc)));
+            ItemList.add(new CatRecyclerViewItem(getString(R.string.cat_succulent), R.drawable.succulent, getString(R.string.cat_succulent_desc)));
+            ItemList.add(new CatRecyclerViewItem(getString(R.string.cat_unusual), R.drawable.unusual, getString(R.string.cat_unusual_desc)));
         }
     }
 

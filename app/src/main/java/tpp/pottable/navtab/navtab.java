@@ -1,6 +1,5 @@
-package tpp.pottable;
+package tpp.pottable.navtab;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,15 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
-import tpp.pottable.sqlite.DatabaseHelper;
-
-import tpp.pottable.sqlite.DatabaseHelper;
-
-import java.util.ArrayList;
-import java.util.List;
+import tpp.pottable.R;
+import tpp.pottable.navtab.catView.DatabaseTab;
+import tpp.pottable.settings;
 
 public class navtab extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package tpp.pottable;
+package tpp.pottable.navtab.catView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
+
+import tpp.pottable.R;
 
 public class CatRecyclerViewDataAdapter extends RecyclerView.Adapter<CatRecyclerViewItemHolder> {
 
