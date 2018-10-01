@@ -13,12 +13,7 @@ import tpp.pottable.sqlite.model.PlantInfo;
 import tpp.pottable.sqlite.model.PlantInfoHolder;
 
 public class PlantInfoRecyclerViewDataAdapter extends RecyclerView.Adapter<PlantInfoHolder> {
-
     private List<PlantInfo> PlantInfoList;
-
-    public PlantInfoRecyclerViewDataAdapter(List<PlantInfo> PlantInfoList) {
-        this.PlantInfoList = PlantInfoList;
-    }
     @Override
     public PlantInfoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Get LayoutInflater object.
@@ -38,7 +33,11 @@ public class PlantInfoRecyclerViewDataAdapter extends RecyclerView.Adapter<Plant
             if(Item != null) {
                 // Set plantinfo card data
                 holder.getName().setText(Item.getName());
-                holder.getImageView_tree().setImageBitmap(Item.getImage()); //dear god pls make this work
+
+                int ImageId = Item.getID();
+                holder.getImageView_tree().setImageResource(Item.getID());
+
+
             }
         }
     }

@@ -1,6 +1,5 @@
 package tpp.pottable.sqlite.model;
 
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,7 +7,7 @@ import android.widget.TextView;
 
 import tpp.pottable.R;
 
-public class PlantInfoHolder extends RecyclerView.ViewHolder{
+public class PlantInfoHolder extends RecyclerView.ViewHolder {
 
     private TextView Name = null;
 
