@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import tpp.pottable.R;
 
-public class RecyclerViewItemHolder extends RecyclerView.ViewHolder {
+public class CatRecyclerViewItemHolder extends RecyclerView.ViewHolder {
 
     private TextView TitleText = null;
 
@@ -15,7 +15,7 @@ public class RecyclerViewItemHolder extends RecyclerView.ViewHolder {
 
     private TextView DescText = null;
 
-    public RecyclerViewItemHolder(View itemView) {
+    public CatRecyclerViewItemHolder(View itemView) {
         super(itemView);
         if(itemView != null)
         {

@@ -1,42 +1,37 @@
 package tpp.pottable;
 
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import tpp.pottable.R;
 
 import java.util.List;
 
-public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewItemHolder> {
+public class CatRecyclerViewDataAdapter extends RecyclerView.Adapter<CatRecyclerViewItemHolder> {
 
-    private List<RecyclerViewItem> ItemList;
+    private List<CatRecyclerViewItem> ItemList;
 
-    public RecyclerViewDataAdapter(List<RecyclerViewItem> ItemList) {
+    public CatRecyclerViewDataAdapter(List<CatRecyclerViewItem> ItemList) {
         this.ItemList = ItemList;
     }
 
     @Override
-    public RecyclerViewItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CatRecyclerViewItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Get LayoutInflater object.
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         // Inflate the RecyclerView item layout xml.
         View ItemView = layoutInflater.inflate(R.layout.cardview, parent, false);
 
         // Create and return our custom Category Recycler View Item Holder object.
-        RecyclerViewItemHolder ret = new RecyclerViewItemHolder(ItemView);
+        CatRecyclerViewItemHolder ret = new CatRecyclerViewItemHolder(ItemView);
         return ret;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewItemHolder holder, int position) {
+    public void onBindViewHolder(CatRecyclerViewItemHolder holder, int position) {
         if(ItemList!=null) {
             // Get category item dto in list.
-            RecyclerViewItem Item = ItemList.get(position);
+            CatRecyclerViewItem Item = ItemList.get(position);
 
             if(Item != null) {
                 // Set category item title.

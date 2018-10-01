@@ -1,6 +1,6 @@
 package tpp.pottable;
 
-public class RecyclerViewItem {
+public class CatRecyclerViewItem {
 
     // Save category name.
     private String Name;
@@ -11,7 +11,7 @@ public class RecyclerViewItem {
     // Save category description.
     private String Desc;
 
-    public RecyclerViewItem(String Name, int ImageId, String Desc) {
+    public CatRecyclerViewItem(String Name, int ImageId, String Desc) {
         this.Name = Name;
         this.ImageId = ImageId;
         this.Desc = Desc;
