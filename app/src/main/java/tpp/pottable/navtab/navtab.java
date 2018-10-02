@@ -90,17 +90,6 @@ public class navtab extends AppCompatActivity {
         return true;
     }
 
-
-    public static class database extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.database, container, false);
-        }
-
-    }
-
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {

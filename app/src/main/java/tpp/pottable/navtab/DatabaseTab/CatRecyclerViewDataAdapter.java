@@ -47,15 +47,14 @@ public class CatRecyclerViewDataAdapter extends RecyclerView.Adapter<CatRecycler
                 holder.getDescText().setText(Item.getDesc());
             }
         }
-            holder.plantinfo_card.setOnClickListener(new View.OnClickListener() {
+        holder.plantinfo_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), PlantInfoRecyclerView.class);
-                intent.putExtra("category", position);
+                intent.putExtra("CATEGORIES", position);
                 view.getContext().startActivity(intent);
-            }
-        }
-        );
+                }
+        });
     }
 
 

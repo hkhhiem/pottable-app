@@ -30,8 +30,14 @@ public class PlantInfoRecyclerView extends AppCompatActivity {
         RecyclerView plantinforecyclerview = (RecyclerView) findViewById(R.id.category_body);
 
         Intent intent = getIntent();
-        String id = intent.getStringExtra("id");
-        PlantInfoList = mDBHelper.getCatPlantInfo(id); //TODO: ID IS JUST HERE TO AVOID PUSH ERROR. WE NEED TO GET CATEGORY NAME FROM ID.
+        String id1 = intent.getStringExtra("COMMON");
+        PlantInfoList = mDBHelper.getCatPlantInfo(id1);
+        String id2 = intent.getStringExtra("FOLIAGE");
+        PlantInfoList = mDBHelper.getCatPlantInfo(id2);
+        String id3 = intent.getStringExtra("SUCCULENT");
+        PlantInfoList = mDBHelper.getCatPlantInfo(id3);
+        String id4 = intent.getStringExtra("UNUSUAL");
+        PlantInfoList = mDBHelper.getCatPlantInfo(id4);
 
         // Create recycler view data adapter with item list.
         PlantInfoRecyclerViewDataAdapter DataAdapter = new PlantInfoRecyclerViewDataAdapter(PlantInfoList);
