@@ -18,7 +18,7 @@ import tpp.pottable.sqlite.model.PlantInfo;
 
 public class PlantInfoRecyclerView extends AppCompatActivity {
 
-    private DatabaseHelper mDBHelper;
+    private DatabaseHelper mDBHelper = new DatabaseHelper(this); //fuck contexts
     private SQLiteDatabase mDb;
     private List<PlantInfo> PlantInfoList = null;
     @Override
@@ -30,14 +30,29 @@ public class PlantInfoRecyclerView extends AppCompatActivity {
         RecyclerView plantinforecyclerview = (RecyclerView) findViewById(R.id.category_body);
 
         Intent intent = getIntent();
-        String id1 = intent.getStringExtra("COMMON");
-        PlantInfoList = mDBHelper.getCatPlantInfo(id1);
-        String id2 = intent.getStringExtra("FOLIAGE");
-        PlantInfoList = mDBHelper.getCatPlantInfo(id2);
-        String id3 = intent.getStringExtra("SUCCULENT");
-        PlantInfoList = mDBHelper.getCatPlantInfo(id3);
-        String id4 = intent.getStringExtra("UNUSUAL");
-        PlantInfoList = mDBHelper.getCatPlantInfo(id4);
+        int id = Integer.parseInt(intent.getStringExtra("selectedCategoryID"));
+        String catName = null;
+        switch (id) {
+            case 0: {
+                catName = "COMMON";
+                break;
+            }
+            case 1: {
+                catName = "FOLIAGE";
+                break;
+            }
+            case 2: {
+                catName = "SUCCULENT";
+                break;
+            }
+            case 3: {
+                catName = "UNUSUAL";
+                break;
+            }
+            default: break; //fuck it
+            }
+        PlantInfoList = mDBHelper.getCatPlantInfo(catName);
+
 
         // Create recycler view data adapter with item list.
         PlantInfoRecyclerViewDataAdapter DataAdapter = new PlantInfoRecyclerViewDataAdapter(PlantInfoList);

@@ -2,7 +2,6 @@ package tpp.pottable.navtab.DatabaseTab;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ public class CatRecyclerViewDataAdapter extends RecyclerView.Adapter<CatRecycler
     public CatRecyclerViewDataAdapter(List<CatRecyclerViewItem> ItemList) {
         this.ItemList = ItemList;
     }
+
 
     @Override
     public CatRecyclerViewItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -45,13 +45,15 @@ public class CatRecyclerViewDataAdapter extends RecyclerView.Adapter<CatRecycler
                 holder.getImageView().setImageResource(Item.getImageId());
                 // Set category image description.
                 holder.getDescText().setText(Item.getDesc());
+                // Set
             }
         }
         holder.plantinfo_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), PlantInfoRecyclerView.class);
-                intent.putExtra("CATEGORIES", position);
+                String categoryID = Integer.toString(position); //lol I hate squeezing
+                intent.putExtra("selectedCategoryID", categoryID);
                 view.getContext().startActivity(intent);
                 }
         });
