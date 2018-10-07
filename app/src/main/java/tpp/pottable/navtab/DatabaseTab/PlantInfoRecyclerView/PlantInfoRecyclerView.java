@@ -1,15 +1,18 @@
 package tpp.pottable.navtab.DatabaseTab.PlantInfoRecyclerView;
 
 import android.content.Intent;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.IOException;
 import java.util.List;
 
 import tpp.pottable.R;
@@ -18,9 +21,27 @@ import tpp.pottable.sqlite.model.PlantInfo;
 
 public class PlantInfoRecyclerView extends AppCompatActivity {
 
-    private DatabaseHelper mDBHelper = new DatabaseHelper(this); //fuck contexts
-    private SQLiteDatabase mDb;
+    DatabaseHelper mDBHelper = new DatabaseHelper(this); //fuck contexts
+
+
+
+    private void PlantInfoOpenDatabase() {
+        try {
+            mDBHelper.createDatabase();
+
+        } catch (IOException ioe) {
+            throw new Error("Unable to create database");
+        }
+        try {
+            mDBHelper.openDatabase();
+
+        }catch(SQLException sqle){
+            throw sqle;
+        }
+    }
+
     private List<PlantInfo> PlantInfoList = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,6 +72,7 @@ public class PlantInfoRecyclerView extends AppCompatActivity {
             }
             default: break; //fuck it
             }
+        PlantInfoOpenDatabase();
         PlantInfoList = mDBHelper.getCatPlantInfo(catName);
 
 
@@ -64,6 +86,4 @@ public class PlantInfoRecyclerView extends AppCompatActivity {
         plantinforecyclerview.setLayoutManager(gridLayoutManager);
 
     }
-    /*DATABASE INIT*/
-
 }

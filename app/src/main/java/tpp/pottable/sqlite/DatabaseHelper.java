@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tpp.pottable.sqlite.model.PlantInfo;
+
+import static android.content.ContentValues.TAG;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -44,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * Creates a empty database on the system and rewrites it with our own default plant info database.
      * */
-    public void createDataBase() throws IOException{
+    public void createDatabase() throws IOException{
 
         boolean dbExist = checkDatabase();
 
@@ -55,6 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //By calling this method and empty database will be created into the default system path
             //of your application so we are gonna be able to overwrite that database with our database.
             this.getReadableDatabase();
+            Log.d("SQLiteDB", "DB doesn't exist, created one.");
 
             try {
 
@@ -131,6 +135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Open the database
         String myPath = DB_PATH + DB_NAME;
         myDatabase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
+        Log.d("SQLiteDB", "Opened DB.");
         return myDatabase;
     }
 
@@ -202,10 +207,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         List<PlantInfo> plantinfo_array = new ArrayList<>();
 
         //query to get plants of a specific category
-        String selectQuery = "SELECT  * FROM " + PlantInfo.TABLE_NAME + " WHERE " + PlantInfo.COLUMN_CATEGORY +" LIKE "+ category + " ORDER BY " +
+        String selectQuery = "SELECT * FROM [" + PlantInfo.TABLE_NAME + "] WHERE "+ PlantInfo.COLUMN_CATEGORY +" LIKE " + category + " ORDER BY " +
                 PlantInfo.COLUMN_NAME + " DESC"; //list out by names, descending
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.openDatabase();
+        Log.d(TAG, "Database successfully loaded");
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         // looping through all rows and adding to list
@@ -238,7 +244,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return plantinfo_array;
     }
     public int getCatPlantCount() {
-        String countQuery = "SELECT  * FROM " + PlantInfo.TABLE_NAME;
+        String countQuery = "SELECT  * FROM [" + PlantInfo.TABLE_NAME + "]";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
 
